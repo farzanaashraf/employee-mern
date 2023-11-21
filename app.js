@@ -1,6 +1,8 @@
 // Task1: initiate app and run server at 3000
 require('dotenv').config();
 require('./db/connect');
+
+const path = require('path');
 const employeeRoute = require('./routes/employeeRoute');
 
 const express = require('express');
@@ -14,21 +16,12 @@ app.use(cors());
 
 app.use('/api', employeeRoute);
 
+app.use(express.static(path.join(__dirname + '/public')));
 
 
-// const path = require('path');
-//const { config } = require('process');
-// app.use(express.static(path.join(__dirname + '/dist/FrontEnd')));
-
-
-// Task2: create mongoDB connection 
-
-
-
-//! dont delete this code. it connects the front end file.
-// app.get('/*', function (req, res) {
-//     res.sendFile(path.join(__dirname + '/dist/Frontend/index.html'));
-// });
+app.get('/*', function (req, res) {
+    res.sendFile(path.join(__dirname + '/public/index.html'));
+});
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
