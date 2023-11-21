@@ -18,5 +18,6 @@ DB_USER=<USER_NAME> DB_SECRET=<PASSWORD> nodemon app.js
 Example:
 
 ```
-DB_USER=farzasds DB_SECRET=SomePassword nodemon app.js
+
+
 ```
